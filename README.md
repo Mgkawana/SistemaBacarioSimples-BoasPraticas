@@ -10,7 +10,7 @@
 
 ......
 
-### Depências 
+### Depêndencias
 ....
 
 ### Estrutura do projeto
