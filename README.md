@@ -6,9 +6,12 @@
 2. Luan Soares
 3. Marcos kawana
 
-### Compilar
+### Como Compilar
 
 ......
+
+### Depências 
+....
 
 ### Estrutura do projeto
 ....
