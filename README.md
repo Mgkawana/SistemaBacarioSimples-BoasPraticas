@@ -22,7 +22,7 @@
 ### Operações disponíveis
 operações do terminal...
 
-### Menu de principal/operações
+### Menu principal/operações
 ....
 
 ### Exemplo de uso. Entrada/saída
