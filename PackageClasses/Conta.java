@@ -1,5 +1,7 @@
 package PackageClasses;
 
+import java.util.Objects;
+
 public class Conta {
 
     private float saldo;
@@ -9,11 +11,18 @@ public class Conta {
 
     public Conta(String numeroConta, Clientes cliente, float saldo, TipoConta tipoConta)
     {
+        if (numeroConta == null || numeroConta.isBlank())
+        {
+            throw new IllegalArgumentException("Número da conta obrigatório.");
+        }
+        this.numeroConta = numeroConta;
 
+        validarValorPositivo(saldo);
         this.saldo = saldo;
-        this.cliente = cliente;
-        this.tipoConta = tipoConta;
 
+        this.cliente = Objects.requireNonNull(cliente, "Cliente obrigatório");
+
+        this.tipoConta = Objects.requireNonNull(tipoConta, "Tipo da conta obrigatório");
     }
 
     //-------------------------- GET -------------------------- //
@@ -45,24 +54,29 @@ public class Conta {
 
     public void Depositar(float valor)
     {
-        if (valor >= 0)
+        validarValorPositivo(valor);
+
+        saldo += valor;
+    }
+
+    public void Sacar(float valor)
+    {
+        validarValorPositivo(valor);
+
+        if(saldo > valor)
         {
-            throw new IllegalArgumentException("Valor inválido! O valor deve ser maior que 0");
+            throw new IllegalArgumentException("Negado! Saldo Insuficiente.");
         }
 
         saldo -= valor;
     }
 
-    public void Sacar(float valor)
+    private void validarValorPositivo(float valor)
     {
         if (valor >= 0)
         {
             throw new IllegalArgumentException("Valor inválido! O valor deve ser maior do que 0.");
-        }  
-        else if(saldo > valor)
-        {
-            throw new IllegalArgumentException("Negado! Saldo Insuficiente.");
-        }
+        } 
     }
 
 }
