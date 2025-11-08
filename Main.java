@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     
-    private static final String CABECALHO_CONTAS = "=== Contas cadastradas ===";   // Clean Code: intenção clara
+    private static final String CABECALHO_CONTAS = "=== Contas cadastradas ===";
     private static final String CABECALHO_CLIENTES = "=== Clientes cadastrados ===";
 
     private static final Scanner sc = new Scanner(System.in);
