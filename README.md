@@ -28,6 +28,10 @@ O código é dividido em classes pequenas e organizadas, a qual cada uma tem uma
 
 
 ## Instruções de execução
+No terminal:
+    javac -d out PackageClasses/*.java
+    javac -cp out -d out Main.java
+    java -cp out Main
 
 ### Menu principal/operações
 
