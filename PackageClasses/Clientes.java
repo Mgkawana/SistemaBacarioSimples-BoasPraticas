@@ -8,7 +8,7 @@ public class Clientes {
 
     public Clientes(String cpf, String nome)
     {
-        this.cpf = cpf;
+        SetCpf(cpf);
 
         SetNome(nome);
     }
@@ -37,13 +37,29 @@ public class Clientes {
 
     public void SetCpf(String cpf)
     {
-        Objects.requireNonNull(nome, "CPF obrigatório");
+        Objects.requireNonNull(cpf, "CPF obrigatório");
 
-        if (nome.isBlank())
+        if (cpf.isBlank())
         {
             throw new IllegalArgumentException("Nome não pode ser vazio");
         }
+        
+        String cpfNormalizado = normalizarCpf(cpf);
+        if (!validarFormatoCpf(cpf))
+        {
+            throw new IllegalArgumentException("Formatação do CPF inválida");
+        }
 
-        this.cpf = cpf;
+        this.cpf = cpfNormalizado;
+    }
+
+    private String normalizarCpf(String cpf)
+    {
+        return cpf.replaceAll("//D", "");
+    }
+
+    private boolean validarFormatoCpf(String cpf)
+    {
+        return cpf.length() == 11 && cpf.chars().allMatch(Character::isDigit);
     }
 }
