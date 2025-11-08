@@ -63,7 +63,7 @@ public class Conta {
     {
         validarValorPositivo(valor);
 
-        if(saldo > valor)
+        if(saldo < valor)
         {
             throw new IllegalArgumentException("Negado! Saldo Insuficiente.");
         }
@@ -73,7 +73,7 @@ public class Conta {
 
     private void validarValorPositivo(float valor)
     {
-        if (valor >= 0)
+        if (valor <= 0)
         {
             throw new IllegalArgumentException("Valor inválido! O valor deve ser maior do que 0.");
         } 

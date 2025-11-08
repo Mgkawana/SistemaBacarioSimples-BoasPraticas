@@ -6,6 +6,13 @@ public class Clientes {
     private String cpf;
     private String nome;
 
+    public Clientes(String cpf, String nome)
+    {
+        this.cpf = cpf;
+
+        SetNome(nome);
+    }
+
     public String getCPF()
     {
         return cpf;
@@ -16,7 +23,7 @@ public class Clientes {
         return nome;
     }
 
-    public void SetNome(String novoNome)
+    public void SetNome(String nome)
     {
         Objects.requireNonNull(nome, "Nome obrigatório");
         
@@ -25,6 +32,18 @@ public class Clientes {
             throw new IllegalArgumentException("Nome não pode ser vazio");
         }
 
-        nome = novoNome;
+        this.nome = nome;
+    }
+
+    public void SetCpf(String cpf)
+    {
+        Objects.requireNonNull(nome, "CPF obrigatório");
+
+        if (nome.isBlank())
+        {
+            throw new IllegalArgumentException("Nome não pode ser vazio");
+        }
+
+        this.cpf = cpf;
     }
 }
