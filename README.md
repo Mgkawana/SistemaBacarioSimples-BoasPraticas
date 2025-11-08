@@ -10,14 +10,14 @@
 
 ......
 
-### Depêndencias
-....
-
 ### Estrutura do projeto
 ....
 
 ## Instruções de execução
-....
+No terminal:
+    javac -d out PackageClasses/*.java
+    javac -cp out -d out Main.java
+    java -cp out Main
 
 ### Operações disponíveis
 operações do terminal...
