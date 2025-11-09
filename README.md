@@ -19,7 +19,7 @@ Apos compilar, execute:
 O projeto implementa um sistema bancário simples usando Java e boas práticas de programação orientada a objetos. Ele permite cadastrar clientes; criar contas bancárias; consultar contas; realizar operações como saque,depósito e transferência.
 
 ### Boas práticas de programação
-O projeto possui arquitetura em camadas(UI → Service → Repository → Domain). Em relação ao SOLID são aplicados os conceitos do S(single responsability) pois cada classe tem apenas uma responsabilidade; I(Interface Segregation) Repositórios têm interfaces próprias;D(DIP — Dependency Inversion Principle) O Menu não depende de classes concretas. Além dessas, outras questões que o tornam um código limpo envolvem: Herança para evitar código duplicado entre conta corrente e poupança; Encapsulamento forte; Uso de DTO e ValueObjects e Repositório separdo do domínio, o que facilita modificações futuras. 
+O projeto possui arquitetura em camadas(UI → Service → Repository → Domain). Em relação ao SOLID são aplicados os conceitos do S(single responsability) pois cada classe tem apenas uma responsabilidade; I(Interface Segregation) Repositórios têm interfaces próprias;D(DIP — Dependency Inversion Principle) O Menu não depende de classes concretas. Além dessas, outras questões que o tornam um código limpo envolvem: Herança para evitar código duplicado entre conta corrente e poupança; Encapsulamento forte; Uso de DTO e ValueObjects e Repositório separado do domínio, o que facilita modificações futuras. 
 
 ### Estrutura do projeto
 * **`Entities`**: São as classes como cliente e conta(corrente e poupança). Armazenam nome, CPF e contas desse cliente.
