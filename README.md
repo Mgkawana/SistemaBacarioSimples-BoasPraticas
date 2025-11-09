@@ -2,36 +2,37 @@
 
 ### Integrantes
 
-1. joão
+1. joão Pereira
 2. Luan Soares
 3. Marcos kawana
 
 ### Como Compilar e executar
 
-Compile todas as classes:
-`javac Main.java PackageClasses/*.java`
-Apos compilar:
-`Java main`
+Compile:
+`javac presentation/Main.java`
+
+
+Apos compilar, execute:
+`java presentation.Main`
 
 ## Explicação do projeto
-O projeto implementa um sistema bancário simples usando Java e boas práticas de programação orientada a objetos. Ele permite cadastrar clientes; criar contas bancárias; consultar contas; realizar operações como saque,depósito e transferência;
+O projeto implementa um sistema bancário simples usando Java e boas práticas de programação orientada a objetos. Ele permite cadastrar clientes; criar contas bancárias; consultar contas; realizar operações como saque,depósito e transferência.
 
 ### Boas práticas de programação
-O código é dividido em classes pequenas e organizadas, a qual cada uma tem uma responsabilidade, seguindo princípios do SRP (Single Responsibility Principle).
+O projeto possui arquitetura em camadas(UI → Service → Repository → Domain). Em relação ao SOLID são aplicados os conceitos do S(single responsability) pois cada classe tem apenas uma responsabilidade; I(Interface Segregation) Repositórios têm interfaces próprias. Além dessas, outras questões que o tornam um código limpo envolvem: Herança para evitar código duplicado entre conta corrente e poupança; Encapsulamento forte; Uso de DTO e ValueObjects e Repositório separdo do domínio, o que facilita modificações futuras. 
 
 ### Estrutura do projeto
-* **`Clientes.java`**: Armazena nome, CPF e contas desse cliente.Serve como modelo (entidade) para cadastrar clientes no sistema. 
-* **`Conta.java`**: Possui o número da conta, saldo, tipo de conta, cliente.Pode registrar transações no extrato. 
-* **`GerenciadorDoSistema.java`**: Possui listas de clientes, listas de contas e as operações: cadastrar cliente, criar conta, buscar conta pelo número, realizar depósitos, saques e transferências chamando métodos de conta.
-* **`TipoConta.java`**: É uma enumeração (enum) que define os tipos de conta possíveis para padronizá-las no sistema.
-* **`Main.java`**: Exibe o menu interativo no terminal.Pede entrada do usuário.Chama métodos do GerenciadorDoSistema. Controla o loop do sistema até o usuário escolher sair.
-
+* **`Entities`**: São as classes como cliente e conta(corrente e poupança). Armazenam nome, CPF e contas desse cliente.
+* **`Value objects`**: Possui CPF e NumeroConta com  suas próprias regras de validação.
+* **`Interfaces`**: IClienteRepositorio e IContaRepositorio.
+* **`Infra`**:ClienteRepImpl e ContaRepImpl, Implementam as interfaces e armazenam informações (lista em memória).
+*  **`Serviços`**: Contêm a lógica de criação,depósito, saque, tranferência, validação e emissão de relatório.
+*  **`DTO`**:RelatorioBancoDTO, usado para retornar dados agregados da camada de serviço sem expor entidades internas.
+*  **`UI`**: Menu.java, recebe entradas do usuário, exibe opções e chama os serviços.
+*  **`Presentation`**: Main.java, apenas inicializa as camadas e chama o menu.
 
 ## Instruções de execução
-No terminal:
-    javac -d out PackageClasses/*.java
-    javac -cp out -d out Main.java
-    java -cp out Main
+
 
 ### Menu principal/operações
 
@@ -48,6 +49,7 @@ No terminal:
 9) Listar Contas
 10) Listar Clientes
 11) Aplicar rendimento (apenas para contas poupança)
+12) Relatório consolidado (quantidades e saldos)
 0) Sair
 Opção:
 ```
